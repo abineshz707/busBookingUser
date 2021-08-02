@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/common :: common-header" />
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/common :: navigation-bar" />
+ <div class="container main">
+   <div class= "jumbotron text-center">
+   <h3>Departure</h3>
+   <h3 data-th-text="${selectedTrip.departure}">Departure</h3>
+   <h3>Arrival</h3>
+   <h3 data-th-text="${selectedTrip.arrival}">Arrival</h3>
+   </div>
+   <form th:action="@{/booking/book}" th:object="${mainId}" method=post>
+        
+        <input type="hidden" name="mainId" th:value="${mainId}" />
+        
+        <div class="form-group" >
+                    <label for="paidBy">Please Select your Payment Method$$</label>
+                    <select class="form-control" th:value="${paidBy}" name="paidBy" id="paidBy" required="required">
+                        <option disabled="disabled" selected="selected"> -- select your payment method -- </option>
+                        <option>Credit card</option>
+                        <option>Debit card</option>
+                        <option>UPI</option>
+                        <option>NetBanking</option>
+                    </select>
+                    <br />
+           </div>
+           <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+
+         <button class="btn btn-lg btn-primary btn-block" type="submit">Pay & BOOK</button>
+        
+   </form>
+</div>
+<div th:replace="common/common :: body-bottom-scripts"/>
+</body>
+</html>

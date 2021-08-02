@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/common :: common-header" />
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/common :: navigation-bar" />
+<div class="container main">
+<div class="row">
+        <h3>My Bookings</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Booking Id</th>
+                    <th>Passenger Name</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>                
+                    <th>Travels Name</th>
+                    <th>BusName</th>
+                    <th>Amenities</th>
+                    <th>PaidBy</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-th-each="booking : ${bookings}">
+                    <td data-th-text="${booking.bookingId}">...</td>
+                    <td data-th-text="${booking.customer.firstName}">...</td>
+                    <td data-th-text="${booking.trip.departure}">...</td>
+                    <td data-th-text="${booking.trip.arrival}">...</td>
+                    <td data-th-text="${booking.travelsName}">...</td>
+                    <td data-th-text= "${booking.busName}">...</td>
+                    <td data-th-text= "${booking.trip.bus.amenities}">...</td>
+                    <td data-th-text= "${booking.paidBy}">...</td>
+                    <td data-th-text ="${booking.status}">..</td>
+                 </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:replace="common/common :: body-bottom-scripts"/>
+</body>
+</html>

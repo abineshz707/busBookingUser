@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/common :: common-header" />
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/common :: navigation-bar" />
+<div class="container main">
+<div class="row">
+        <h3>List of Trips</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Trip Id</th>
+                    <th>Travels Name</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Bus Amenities</th>
+                    <th>TotalSeats</th>
+                    <th>Available Seats</th>
+                    <th><code>Action</code></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-th-each="trip : ${trips}">
+                    <td data-th-text="${trip.tripId}">...</td>
+                    <td data-th-text="${trip.bus.travels.travelsName}">...</td>
+                    <td data-th-text="${trip.departure}">...</td>
+                    <td data-th-text="${trip.arrival}">...</td>
+                    <td data-th-text="${trip.bus.amenities}">...</td>
+                    <td data-th-text= "${trip.bus.totalSeats}">...</td>
+                    <td data-th-text= "${trip.availableSeats}">...</td>
+                    <td><a th:href="@{/booking/book?tripId=}+${trip.tripId}"><kbd>Book</kbd></a></td>
+                 </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:replace="common/common :: body-bottom-scripts"/>
+</body>
+</html>
